@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Meu Portfólio</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>{{ nome }}</h1>
+        <p>{{ descricao }}</p>
+        <p>{{ status }}</p>
+        <p>{{ curso }}</p>
+        <p>{{ faculdade }}</p>
+        
+        <h2 class="contact-info">Contato</h2>
+        <p class="contact-info">Email: <a href="mailto:adson.jesus@aluno.senai.br">adson.jesus@aluno.senai.br</a></p>
+        <p class="contact-info">LinkedIn: <a href="https://www.linkedin.com/in/adson-dias-a3709623b" target="_blank">LinkedIn</a></p>
+
+        <a href="https://mail.google.com/mail/u/0/?view=cm&fs=1&to=adson.jesus@aluno.senai?subject=Contato%20atrav%C3%A9s%20do%20Portfolio&body=Vi%20seu%20projeto%20de%20portfolio%20e%20gostei%20bastante%21" target="_blank" class="contact-button">Enviar E-mail</a>
+        
+        <a href="#contact" class="scroll-to-contact">Rolar para Contato</a>
+
+        <a href="{{ url_for('projects') }}" class="button">Ver Projetos</a>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const projects = document.querySelectorAll('.project');
+            projects.forEach(project => {
+                project.classList.add('visible');
+            });
+        });
+
+        const sendEmailLink = document.querySelector('.contact-button');
+        sendEmailLink.addEventListener('click', function () {
+            const contactInfo = document.querySelector('.contact-info');
+            contactInfo.classList.add('highlight');
+        });
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const scrollToContactLink = document.querySelector('.scroll-to-contact');
+            scrollToContactLink.addEventListener('click', function (event) {
+                event.preventDefault();
+                const contactSection = document.getElementById('contact');
+                contactSection.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
+</body>
+</html>

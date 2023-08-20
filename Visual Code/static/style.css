@@ -1,0 +1,346 @@
+/* Estilo do corpo da página */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #3a3d80;
+    animation: backgroundAnimation 2s infinite alternate;
+}
+
+@keyframes backgroundAnimation {
+    0% {
+        background-color: #3a3d80;
+    }
+    100% {
+        background-color: #3d8066;
+    }
+}
+
+/* Estilo do contêiner principal */
+.container {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    background-color: #401717;
+    box-shadow: 0 0 10px rgba(200, 212, 180, 0.1);
+    border-radius: 5px;
+}
+
+/* Estilo para o cabeçalho */
+h1 {
+    text-align: center;
+    margin-bottom: 10px;
+    color: #8a4377;
+    animation: headingAnimation 2s infinite, blinkAnimation 2s infinite;
+}
+
+/* Estilo para os parágrafos */
+p {
+    margin: 5px 0;
+    color: #8f8f41;
+}
+
+/* Estilo para os projetos */
+.project {
+    background-color: #36648c;
+    border: 1px solid #56a461;
+    padding: 20px;
+    margin: 10px 0;
+    border-radius: 5px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.project:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(238, 31, 31, 0.2);
+    background-color: #f9f9f9;
+    cursor: pointer;
+}
+
+/* Animação para o cabeçalho */
+@keyframes headingAnimation {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+/* Animação de rotação para os projetos */
+@keyframes rotationAnimation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.project img {
+    animation: rotationAnimation 4s infinite linear;
+}
+
+/* Animação de piscar para o cabeçalho */
+@keyframes blinkAnimation {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+}
+
+.contact-info {
+    transition: background-color 0.3s ease-in-out;
+}
+.contact-info:hover {
+    background-color: #6e325e;
+    color: white;
+}
+
+.scroll-to-contact {
+    /* Estilo do botão */
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #8a4377;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+.scroll-to-contact:hover {
+    background-color: #6e325e;
+}
+
+.highlight {
+    background-color: #f9f9f9;
+    color: #8a4377;
+    transition: background-color 1s ease-in-out, color 1s ease-in-out;
+}
+
+/* Animações adicionais para o corpo */
+body {
+    animation: fadeInAnimation 2s ease-in-out, pulseAnimation 2s infinite alternate, colorWheel 10s infinite linear;
+}
+
+@keyframes fadeInAnimation {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes pulseAnimation {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(1.1);
+    }
+}
+
+@keyframes colorWheel {
+    0% {
+        background-color: #ff5733;
+    }
+    25% {
+        background-color: #33ff57;
+    }
+    50% {
+        background-color: #5733ff;
+    }
+    75% {
+        background-color: #ff33bf;
+    }
+    100% {
+        background-color: #33bfff;
+    }
+}
+
+
+/* Animação de balanço para os projetos */
+.project {
+    /* ... (outros estilos) ... */
+    animation: fadeInAnimation 1s ease-in-out, swingAnimation 2s infinite alternate;
+}
+
+@keyframes swingAnimation {
+    0%, 100% {
+        transform: rotate(0deg);
+    }
+    50% {
+        transform: rotate(5deg);
+    }
+}
+
+/* ... (código anterior) ... */
+
+/* Animação de zoom para os projetos ao passar o mouse */
+.project {
+    /* ... (outros estilos) ... */
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.project:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(238, 31, 31, 0.2);
+}
+
+
+
+/* Animação de deslize para cima ao rolar a página */
+.scroll-to-top {
+    /* ... (outros estilos) ... */
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+}
+
+.scroll-to-top.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* ... (resto do código) ... */
+
+/* ... (seu código CSS existente) ... */
+
+/* Animação de paralisação do giro ao passar o mouse */
+.project {
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.project:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(238, 31, 31, 0.2);
+    background-color: #f9f9f9;
+    cursor: pointer;
+    animation: none; /* Remove a animação de giro ao passar o mouse */
+}
+
+/* Animação de deslize para cima ao rolar a página */
+.scroll-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+}
+
+.scroll-to-top.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Animação de balanço para o cabeçalho */
+h1 {
+    animation: headingSwingAnimation 2s infinite alternate;
+}
+
+@keyframes headingSwingAnimation {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(10px);
+    }
+}
+
+/* Animação de piscar para os links de contato */
+.contact-info a {
+    animation: linkBlinkAnimation 2s infinite;
+}
+
+@keyframes linkBlinkAnimation {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+/* Animação de girar para os projetos */
+.project img {
+    animation: rotationAnimation 4s infinite linear;
+}
+
+@keyframes rotationAnimation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Animação de mudança de cor suave */
+.project {
+    transition: background-color 0.5s ease-in-out;
+}
+
+.project:hover {
+    background-color: #3d8066;
+    color: white;
+}
+  
+/*-------------------------------/*
+
+/* Animação de zoom suave ao passar o mouse sobre os projetos */
+.project {
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.project:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(238, 31, 31, 0.2);
+    background-color: #f9f9f9;
+    cursor: pointer;
+}
+
+/* Animação de rolagem suave para o topo */
+.scroll-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+}
+
+.scroll-to-top.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Animação de fade-in para os projetos */
+.project {
+    animation: fadeInAnimation 1ms ease-in-out;
+}
+
+@keyframes fadeInAnimation {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Animação de mudança de cor suave para os botões */
+.button {
+    transition: background-color 0.5ms ease-in-out, color 0.5ms ease-in-out;
+}
+
+.button:hover {
+    background-color: #6e325e;
+    color: white;
+}
