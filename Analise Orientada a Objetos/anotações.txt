@@ -1,0 +1,107 @@
+Paradigma Orientada a objetos -------------------------------------------------------------------------------------------------
+  
+Permite herança , polimorfisio , agregação e composição
+
+Classes são conjuntos de valores que podemos transformar em objetos 
+
+Classe - define o comportamento de seus objetos atravez de metodos 
+
+objeto - instancia de uma classe (deriva da classe)
+
+Herança - As classes compartilham seus atributos , metodos e outros membros da classe entre si (passa de pai pra filho)
+
+Polimorfismo , metodos que tem a mesma assinatura, mas comportamentos distintos 
+
+Encapsulamento - Proibição do acesso ao direto ao estado do objeto
+
+UML ------------------------------------------------------------------------------------------------------------------------------ 
+
+combina os conceitos comuns de linguagens oo 
+
+Compativel com desenvolvimento de sotfware desde os requistos ate as estapas finais do desenvolvimento 
+
+O UML busca....
+
+capturar e definir com precisão os requisitos 
+
+Auxiliar o inicio do projeto do sistema 
+
+Solução que contenha as decisões de projeto 
+
+Explorar diferentes soluções 
+
+Permitir o facil entendimento de projetos complexos
+
+O Uml pode ser utilizado em qualquer fluxo de desenvolvimento ou metodos agies 
+
+
+Nivel de abstração ------------------------------------------------------------
+
+Alto - ser claro e simples , apresentação os conceutos ao cliente para tomada de decisão 
+Medio - Guiar o desenvolvimento apresentado, sem detalhar demais , as classes , os objetos e as interações 
+Baixo- demonstrar como deve ser desenvolvido o sistema propriamente dito , Necessita de diagramas e modelos com a especificação completa de cada 
+modulo , interação e outras informações que possam ser necessarias
+
+Diagrama estrutural - visa a estrutura do projeto (como vai desenvolver os codigos)
+
+Diagrama comportamentais - visa o comportamento do codigo 
+
+Diagrama de classes - e o mais usado na UML -------------------------------------------------------------------------------------
+
+Classes: 
+
+ . Atributos;
+ . Metodos;
+
+Relacionamento : 
+
+ . Associação;
+ . Herança;
+ . Polimorfismo;
+
+Diagrama de Caso de Uso - um dos mais usados -------------------------------------------------------------------------------------------------------
+
+vai montar um diagrama com o ponto de vista do usuario
+
+
+Processo Unificado ------------------------------------------------------------------------------
+
+
+Processo --- quem , o que , como e quando ; 
+
+Interativo e incremental;
+Dirigido por uma lista de casos de uso;
+Focado na arquitetura do sistema;
+Orientado a riscos;
+
+Fases do processo unificado 
+
+Concepção e a primeira fase onde esta relacionada com a comunicação com o cliente e o planejamento 
+
+Elaboração e uma revisão com a aprofundamento 
+
+Construção e o a parte do desenvolvimento junto com alguns testes
+
+Transição incremento do projeto 
+
+e depois repete essas fases novamente até complentar o projeto 
+
+
+Mecanismos comuns da UML ---------------------------------------------------------------------------------------------
+
+Especificação - Descrição exata do elemento , tras o detalhamento dos atributos , operações e comportamentos
+
+Adorno - Notação grafica dos modelos 
+
+Diviões comuns
+
+ . Divisão de classes e objetos , uma classe e uma abstração e um objeto e uma manifestação concreta dessa abstraçãp
+
+ . Separação de interface e implementação, Uma interface declara um contrato e a implementação representa uma realização completa e fiel desse contrato
+
+Mecanismo de extensão 
+
+ . Estereotipos : e possivel , Na uml , utilizar o "desenho" de uma determinado bloco e modifica - lo para um proposito espeficifo, criando um novo objeto
+ . Restrições : e possivel tbm na Uml , Alterar as restrições na construçao de um diagrama , Em Uml as restrições são representadas pelas strings que 
+acompanham as ligações entre elementos.
+ . Valores predefinidos: e possivel predefinir valores especificos em um diagrama , para guiar a implementação do sistema ou gerenciamento de config do sistema.
