@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cronograma de Estudos</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+
+<div class="container">
+    <h1>Cronograma de Estudos</h1>
+    <form id="taskForm" method="post" action="/adicionar">
+        <input type="text" id="disciplina" name="disciplina" placeholder="Disciplina" required>
+        <input type="text" id="descricao" name="descricao" placeholder="Descrição" required>
+        <input type="date" id="data" name="data" required>
+        <button type="submit" class="btn">Adicionar Tarefa</button>
+    </form>
+    <ul id="taskList">
+        {% for idx, tarefa in tarefas_enum %}
+        <li>
+            <span>{{ tarefa.disciplina }}</span>
+            <span>{{ tarefa.descricao }}</span>
+            <span>{{ tarefa.data }}</span>
+            <button class="btn btn-danger deleteBtn">Excluir</button>
+            <button class="btn updateBtn" data-id="{{ idx }}">Atualizar</button>
+        </li>
+        {% endfor %}
+    </ul>
+    <p>Seu IP: <span id="userIP"></span></p>
+</div>
+
+<div id="confirmDeleteModal" class="modal">
+    <div class="modal-content">
+        <p>Deseja realmente excluir esta tarefa?</p>
+        <button class="confirmYes">Sim</button>
+        <button class="confirmNo">Não</button>
+    </div>
+</div>
+
+<div id="confirmUpdateModal" class="modal">
+    <div class="modal-content">
+        <p>Deseja realmente atualizar esta tarefa?</p>
+        <button class="confirmYes">Sim</button>
+        <button class="confirmNo">Não</button>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const taskList = document.getElementById('taskList');
+        const confirmDeleteModal = document.getElementById('confirmDeleteModal');
+        const confirmYesDelete = document.querySelector('#confirmDeleteModal .confirmYes');
+        const confirmNoDelete = document.querySelector('#confirmDeleteModal .confirmNo');
+        const confirmUpdateModal = document.getElementById('confirmUpdateModal');
+        const confirmYesUpdate = document.querySelector('#confirmUpdateModal .confirmYes');
+        const confirmNoUpdate = document.querySelector('#confirmUpdateModal .confirmNo');
+        const userIP = document.getElementById('userIP');
+
+        // Função para buscar o IP do usuário
+        function getIP(json) {
+            userIP.textContent = json.ip;
+        }
+
+        // Chamada para a API de geolocalização
+        fetch('https://api.ipify.org?format=json')
+            .then(response => response.json())
+            .then(data => getIP(data))
+            .catch(error => console.error('Erro ao obter IP:', error));
+
+        taskList.addEventListener('click', function(e) {
+            if (e.target.classList.contains('deleteBtn')) {
+                e.preventDefault(); // Evitar que o evento de clique no botão de excluir se propague para o formulário
+                const currentTask = e.target.parentElement;
+                confirmDeleteModal.classList.add('active');
+                confirmYesDelete.addEventListener('click', function() {
+                    currentTask.remove();
+                    confirmDeleteModal.classList.remove('active');
+                    // Enviar uma solicitação para excluir a tarefa do banco de dados
+                });
+                confirmNoDelete.addEventListener('click', function() {
+                    confirmDeleteModal.classList.remove('active');
+                });
+            } else if (e.target.classList.contains('updateBtn')) {
+                const taskId = e.target.getAttribute('data-id');
+                const taskToUpdate = document.querySelectorAll('#taskList li')[taskId];
+                const disciplina = taskToUpdate.querySelector('span:nth-child(1)').textContent;
+                const descricao = taskToUpdate.querySelector('span:nth-child(2)').textContent;
+                const data = taskToUpdate.querySelector('span:nth-child(3)').textContent;
+
+                // Atualizar a tarefa com os dados obtidos
+                confirmUpdateModal.classList.add('active');
+                confirmYesUpdate.addEventListener('click', function() {
+                    // Aqui você pode implementar a lógica para atualizar a tarefa com os dados obtidos
+                    console.log('Tarefa atualizada:', { disciplina, descricao, data });
+                    confirmUpdateModal.classList.remove('active');
+                });
+                confirmNoUpdate.addEventListener('click', function() {
+                    confirmUpdateModal.classList.remove('active');
+                });
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
