@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, copy_current_request_context
 
 app = Flask(__name__)
 
@@ -8,7 +8,24 @@ tarefas = []
 # Rota para a página inicial (lista de tarefas)
 @app.route('/')
 def index():
-    return render_template('index.html', tarefas_enum=enumerate(tarefas))
+    # Cópia da lista de tarefas original
+    tarefas_original = list(tarefas)
+    
+    # Ordenar as tarefas com base no parâmetro 'sort_by' (disciplina, descricao, data)
+    sort_by = request.args.get('sort_by')
+    if sort_by in ['disciplina', 'descricao', 'data']:
+        tarefas_original.sort(key=lambda x: x.get(sort_by))
+
+    # Filtrar as tarefas com base no parâmetro 'filter_by' (disciplina, data)
+    filter_by = request.args.get('filter_by')
+    filter_value = request.args.get('filter_value')
+    if filter_by and filter_value:
+        if filter_by == 'disciplina':
+            tarefas_original = [tarefa for tarefa in tarefas_original if tarefa['disciplina'] == filter_value]
+        elif filter_by == 'data':
+            tarefas_original = [tarefa for tarefa in tarefas_original if tarefa['data'] == filter_value]
+
+    return render_template('index.html', tarefas_enum=enumerate(tarefas_original))
 
 # Rota para adicionar uma nova tarefa de estudo
 @app.route('/adicionar', methods=['POST'])
