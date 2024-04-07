@@ -97,6 +97,8 @@
                 confirmYesDelete.addEventListener('click', function() {
                     currentTask.remove();
                     confirmDeleteModal.classList.remove('active');
+                    // Exibir mensagem de confirmação
+                    alert("Tarefa excluída com sucesso!");
                     // Enviar uma solicitação para excluir a tarefa do banco de dados
                 });
                 confirmNoDelete.addEventListener('click', function() {

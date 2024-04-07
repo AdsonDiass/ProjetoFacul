@@ -1,12 +1,48 @@
-from flask import Flask, render_template, request, redirect, copy_current_request_context
+from flask import Flask, render_template, request, redirect, session, url_for
+from flask_login import LoginManager, UserMixin, login_user, logout_user, login_required
+from werkzeug.security import generate_password_hash, check_password_hash
 
 app = Flask(__name__)
+app.secret_key = 'sua_chave_secreta_aqui'
+
+# Configuração do Flask-Login
+login_manager = LoginManager()
+login_manager.init_app(app)
+
+# Simulação de um banco de dados de usuários
+users = {'Adson': {'senha': generate_password_hash('123456')}, 
+         'Gustavo': {'senha': generate_password_hash('123456')}}
+
+class User(UserMixin):
+    pass
+
+@login_manager.user_loader
+def load_user(username):
+    if username not in users:
+        return
+    user = User()
+    user.id = username
+    return user
 
 # Armazenar as tarefas de estudo (simulando um banco de dados)
 tarefas = []
 
+# Rota para a tela de login
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        if username in users and check_password_hash(users[username]['senha'], password):
+            user = User()
+            user.id = username
+            login_user(user)
+            return redirect(url_for('index'))
+    return render_template('login.html')
+
 # Rota para a página inicial (lista de tarefas)
 @app.route('/')
+@login_required
 def index():
     # Cópia da lista de tarefas original
     tarefas_original = list(tarefas)
@@ -29,6 +65,7 @@ def index():
 
 # Rota para adicionar uma nova tarefa de estudo
 @app.route('/adicionar', methods=['POST'])
+@login_required
 def adicionar_tarefa():
     disciplina = request.form['disciplina']
     descricao = request.form['descricao']
@@ -38,6 +75,7 @@ def adicionar_tarefa():
 
 # Rota para atualizar uma tarefa de estudo
 @app.route('/atualizar/<int:id>', methods=['POST'])
+@login_required
 def atualizar_tarefa(id):
     nova_disciplina = request.form['nova_disciplina']
     nova_descricao = request.form['nova_descricao']
@@ -49,9 +87,17 @@ def atualizar_tarefa(id):
 
 # Rota para excluir uma tarefa de estudo
 @app.route('/excluir/<int:id>')
+@login_required
 def excluir_tarefa(id):
     del tarefas[id]
     return redirect('/')
+
+# Rota para logout
+@app.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    return redirect(url_for('login'))
 
 if __name__ == '__main__':
     app.run(debug=True)
