@@ -15,7 +15,7 @@
 ## 📁 Acesso ao projeto
 Você pode acessar os arquivos do projeto clicando [aqui](https://github.com/meninofeiu/ProjetoFacul/tree/main/Projeto%20Extens%C3%A3o).
 
-💙 Acompanhe mais pelo LinkedIn. [Gustavo Cunha](https://www.linkedin.com/in/adson-dias-a3709623b/)
+💙 Acompanhe mais pelo LinkedIn. [Adson Dias](https://www.linkedin.com/in/adson-dias-a3709623b/)
 
 
 
