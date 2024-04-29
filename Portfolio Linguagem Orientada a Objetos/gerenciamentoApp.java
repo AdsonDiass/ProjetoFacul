@@ -6,7 +6,7 @@ public class gerenciamentoApp {
 
         System.out.println("Bem-vindo ao sistema de gerenciamento bancário!");
 
-        // Pedir informações do usuário
+        // Pedir dados do usuário
         System.out.print("Digite seu nome: ");
         String nome = scanner.nextLine();
 
